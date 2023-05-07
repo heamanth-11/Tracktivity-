@@ -1,0 +1,23 @@
+:root {
+    --primary-color: #2C3E50;
+    --secondary-color: #27AE60;
+  }
+  #root{
+margin: auto;
+
+  }
+  .btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+  }
+  
+  .btn-primary:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+  }
+  
+  .form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(44, 62, 80, 0.25);
+  }
+  
