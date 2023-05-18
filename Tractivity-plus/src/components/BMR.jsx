@@ -27,11 +27,10 @@ function BMRTracker() {
     setBMR(null);
   }
 
-  return (
-    <div className="container mt-5 justify-content-center">
-        <div className="row justify-content-center"></div>
-        <div className="col-md-6 justify-content-center">
-        <div className="card">
+  return (<div className="container mt-5 ">
+     <div className="row justify-content-center">
+        <div className="col-md-6">
+        <div className="card justify-content-center">
             <div className="card-body justify-content-center">
       <h1>BMR Tracker</h1>
       <form>
@@ -64,6 +63,7 @@ function BMRTracker() {
             <option value="1.9">Extra Active</option>
           </select>
         </div>
+        <br />
         <div className="form-group">
           <button type="button" className="btn btn-primary mr-3" onClick={handleCalculate}>Calculate</button>
           <button type="button" className="btn btn-secondary" onClick={handleReset}>Reset</button>
@@ -71,7 +71,7 @@ function BMRTracker() {
       </form>
       </div>
       </div>
-      </div>
+     
       {bmr && (
         <div className="mt-4">
           <h4>Your BMR is {bmr.toFixed(2)} calories per day</h4>
@@ -80,6 +80,9 @@ function BMRTracker() {
         </div>
       )}
     </div>
+    </div>
+      </div>
+  
   );
 }
 

@@ -4,7 +4,10 @@ const port = 3000
 const cors = require("cors")
 const bodyParser = require("body-parser")
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://127.0.0.1:27017/test');
+
+
+
+mongoose.connect('mongodb+srv://heamnath:oEVo2eSZzxThERPJ@cluster0.vuifujj.mongodb.net/?retryWrites=true&w=majority',{useNewUrlParser: true, useUnifiedTopology: true});
 const TestModel = require("./models/testmodel")
 const User = require('./models/userModels')
 const bcrypt = require('bcrypt');
@@ -57,7 +60,9 @@ app.post('/login', async (req, res) => {
   
 
 
-app.post('/signin', async (req, res) => {
+app.post('/signup', async (req, res) => {
+  console.log(req.body)
+  if(req.body.email){
     const { email, password, name, username, age, sex } = req.body;
     console.log(req.body)
   
@@ -72,12 +77,33 @@ app.post('/signin', async (req, res) => {
       await newUser.save();
   
       // send a success response
-      res.status(200).json({ message: 'Sign in successful!' });
+      res.status(200).json({ user_id: newUser.id });
     } catch (error) {
       console.error(error);
   
       // send an error response
       res.status(500).json({ message: 'An error occurred while signing in.' });
+    }}
+    else{
+      const { weight,height,goal,id } = req.body;
+      const originalString = req.body.id;
+const formattedString = originalString.replace(/^"(.*)"$/, '$1');
+console.log(formattedString)
+      const user = await User.findOne({_id:String(formattedString ) });
+      if(user){
+        user.weight = weight;
+        user.height = height;
+        user .goal = goal;
+        // await user.save();
+        // res.status(200).json({ user_id: newUser.id });
+        res.status(404).json({ message: 'User not found.' });
+
+      }
+      else{
+        res.status(404).json({ message: 'User not found.' });
+      }
+
+
     }
   });
   

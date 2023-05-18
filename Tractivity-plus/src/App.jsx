@@ -11,6 +11,8 @@ import DailyMealTracker from './components/DailyMeal';
 import TrackNutrients from './components/TrackNutrients';
 import NavyBodyFatCalculator from './components/NavyBodyFatTracker';
 import BMRTracker from './components/BMR'
+import BMICalculator from './components/bmi'
+import Complete_SignUpComponent from './components/complete_sign_up';
 function App() {
   const [count, setCount] = useState(0)
 
@@ -19,12 +21,14 @@ function App() {
      <Router>
       <Routes>
         <Route exact path="/" element={<LoginPage />} />
-        <Route exact path="/signin" element={<SignIn />} />
+        <Route exact path="/signup" element={<SignIn />} />
         <Route exact path="/track-nutrients" element={<TrackNutrients />} />
         <Route exact path="/navy-body-fat-tracker" element ={<NavyBodyFatCalculator />} />
         <Route exact path="/bmr-tracker" element ={<BMRTracker />} />
-
+        <Route exact path='/bmi-tracker' element ={<BMICalculator />} />
         <Route exact path="/dailymeal" element ={<DailyMealTracker />} />
+        <Route exact path="/complete-sign-up" element ={<Complete_SignUpComponent />} />
+
         </Routes>
     </Router>
     </>

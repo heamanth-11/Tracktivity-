@@ -9,6 +9,7 @@ function LoginPage() {
   const [password, setPassword] = useState('');
   const [loggedIn, setLoggedIn] = useState(false);
   const [userData, setUserData] = useState(null);
+  const [error, setError] = useState(null);
   const history = useNavigate();
 
   const handleSubmit = (event) => {
@@ -21,7 +22,10 @@ function LoginPage() {
       setLoggedIn(true);
       sessionStorage.setItem('userData', JSON.stringify(response.data.user_id)); // storing user data in sessionStorage
       history('/dailymeal'); // redirect the user to the dashboard page
-    })
+    }).catch(error => {
+      setError('Failed to login. Please check your username and password.');
+      alert(error)
+    });
   };
 
   const handleFacebookLogin = (response) => {

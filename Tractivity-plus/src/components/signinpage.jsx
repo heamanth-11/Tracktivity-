@@ -1,6 +1,7 @@
 import { useState } from 'react';
+
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function SignIn() {
@@ -10,23 +11,28 @@ function SignIn() {
   const [username, setUsername] = useState('');
   const [age, setAge] = useState('');
   const [sex, setSex] = useState('');
+  const history = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     const formData = { email, password, name, username, age, sex };
+    console.log(formData)
 
     try {
-      const response = await fetch('http://localhost:3000/signin', {
+      const response = await fetch('http://localhost:3000/signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
       });
 
       const data = await response.json();
+      console.log(data);
 
       if (response.ok) {
-        alert('Sign in successful!');
+        alert('Sign in successful!,');
+        sessionStorage.setItem('userData', JSON.stringify(data.user_id));
+        history('/complete-sign-up');
       } else {
         alert(data.message);
       }

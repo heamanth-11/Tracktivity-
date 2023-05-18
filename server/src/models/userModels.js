@@ -8,10 +8,17 @@ const userSchema = new mongoose.Schema({
   name: String,
   username: String,
   age: Number,
-  sex: String
+  sex: String,
+  weight:Number,
+  height:Number,
+  bmi:Number,
+  bmr:Number,
+  goal:String
+
+
 });
 
 // create a mongoose model for the user schema
-const User = mongoose.model('User', userSchema);
+const User =  new mongoose.model('User', userSchema);
 
 module.exports = User;
