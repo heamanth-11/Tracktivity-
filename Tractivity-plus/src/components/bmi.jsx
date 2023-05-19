@@ -16,13 +16,15 @@ function BMICalculator() {
     setHeight('');
     setBMI(null);
   }
+ const styles =  {
+  marginBottom:'10%'}
 
-  return (<div className="container mt-5">
+  return (<div style={styles}  className="container mt-5">
     <div  className="row justify-content-center">
         <div className="col-md-5">
         <div className="card justify-content-center">
             <div className="card-body justify-content-center">
-      <h1>BMR Tracker</h1>
+      <h1>BMI Tracker</h1>
       <form>
         <div className="form-group">
           <label htmlFor="weight">Weight (kg):</label>

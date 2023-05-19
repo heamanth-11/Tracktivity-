@@ -34,9 +34,10 @@ const NavyBodyFatCalculator = () => {
     calculateBodyFat();
     setBodyFat('25.8')
   }
-
+  const styles =  {
+    marginBottom:'6%'}
   return (
-    <div className="container mt-5">
+    <div style={styles} className="container mt-5">
       <div className="row justify-content-center">
         <div className="col-md-6">
           <div className="card">

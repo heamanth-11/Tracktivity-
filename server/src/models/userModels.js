@@ -13,7 +13,13 @@ const userSchema = new mongoose.Schema({
   height:Number,
   bmi:Number,
   bmr:Number,
-  goal:String
+  goal:String,
+    // other fields...
+    friends: {
+      type: [mongoose.Schema.Types.ObjectId], // Array of ObjectIds
+      // Reference to the User collection
+      default: [], // Default empty array
+    }
 
 
 });

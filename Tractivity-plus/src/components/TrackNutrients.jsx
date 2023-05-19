@@ -32,11 +32,12 @@ const TrackNutrients = ({ onSave }) => {
     setQuery(''); // Clear the search query
   };
 
+
   // Calculate total nutrient values
-  const totalCalories = savedFoods.reduce((total, food) => total + food.calories, 0);
-  const totalProtein = savedFoods.reduce((total, food) => total + food.protein_g, 0);
-  const totalFat = savedFoods.reduce((total, food) => total + food.fat_total_g, 0);
-  const totalCarbs = savedFoods.reduce((total, food) => total + food.carbohydrates_total_g, 0);
+  const totalCalories = savedFoods.reduce((total, food) =>   Math.round(total + food.calories), 0);
+  const totalProtein = savedFoods.reduce((total, food) =>   Math.round(total + food.protein_g), 0);
+  const totalFat = savedFoods.reduce((total, food) =>   Math.round(total + food.fat_total_g), 0);
+  const totalCarbs = savedFoods.reduce((total, food) =>   Math.round(total + food.carbohydrates_total_g), 0);
   console.log(totalCalories,totalProtein)
 
   const handleSave = () => {
@@ -80,10 +81,10 @@ const TrackNutrients = ({ onSave }) => {
           {savedFoods.map(food => (
             <tr key={food.name}>
               <td>{food.name}</td>
-              <td>{food.calories}</td>
-              <td>{food.protein_g}</td>
-              <td>{food.fat_total_g}</td>
-              <td>{food.carbohydrates_total_g}</td>
+              <td>{Math.round(food.calories)}</td>
+              <td>{Math.round(food.protein_g)}</td>
+              <td>{Math.round(food.fat_total_g)}</td>
+              <td>{Math.round(food.carbohydrates_total_g)}</td>
               <td>
                 <button
                   className="btn btn-outline-danger m-1"

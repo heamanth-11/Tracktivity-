@@ -57,7 +57,7 @@ const Complete_SignUpComponent = () => {
         />
       </div>
       <div className="form-group">
-        <label htmlFor="weight">Weight in CM:</label>
+        <label htmlFor="weight">Weight in kg:</label>
         <input
           type="number"
           className="form-control"

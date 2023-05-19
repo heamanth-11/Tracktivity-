@@ -21,7 +21,7 @@ function LoginPage() {
       setUserData(response.data); // assuming response.data is an object that contains the user data
       setLoggedIn(true);
       sessionStorage.setItem('userData', JSON.stringify(response.data.user_id)); // storing user data in sessionStorage
-      history('/dailymeal'); // redirect the user to the dashboard page
+      history('/'); // redirect the user to the dashboard page
     }).catch(error => {
       setError('Failed to login. Please check your username and password.');
       alert(error)
@@ -46,9 +46,9 @@ function LoginPage() {
               <h1 className="card-title text-center mb-4">Login</h1>
               <form onSubmit={handleSubmit}>
                 <div className="form-group">
-                  <label htmlFor="username">Username</label>
+                  <label htmlFor="username">Email</label>
                   <input
-                    type="text"
+                    type="email"
                     className="form-control"
                     id="username"
                     value={username}

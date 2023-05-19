@@ -1,13 +1,30 @@
 import React, { useState } from 'react';
 import TrackNutrients from './TrackNutrients';
 
+import axios from 'axios';
+
+
 const MealCard = ({ title }) => {
   const [showTrackNutrients, setShowTrackNutrients] = useState(false);
   const [totalNutrients, setTotalNutrients] = useState({ calories: 0, protein_g: 0, fat_g: 0, carbohydrates_total_g: 0 });
 
   const handleSave = () => {
-    // Save the total nutrients value of the foods list
-    console.log(`Saved total nutrients for ${title}:`, totalNutrients);
+// Save the total nutrients value of the foods list
+console.log(`Saved total nutrients for ${title}:`, totalNutrients);
+
+const userData = sessionStorage.getItem('userData');
+  if (userData) {
+    console.log(userData);
+    const parsedUserData = JSON.parse(userData);
+    axios.post(`http://localhost:3000/users/nutrition/${parsedUserData}`, totalNutrients)
+      .then(response => {
+        console.log(response.data);
+    })
+    .catch(error => {
+      console.error('Error saving user nutrition data:', error);
+    });
+}
+
   };
 
   const handleTrackNutrientsClose = () => {
